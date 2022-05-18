@@ -1,11 +1,14 @@
 package ShipmentTracking
 
-import ShipmentTracking.ShipmentUpdates.ShipmentUpdate
 import java.io.File
 
 class UpdateFileReader(path: String) {
     private var updates: List<List<String>>
     private var createdUpdates: List<List<String>>
+    var updateCount: Int = 0
+        get() {
+            return updates.size
+        }
     init {
         val lines = File(path).useLines { it.toList() }
         createdUpdates = lines.map { it.split(",") }.filter { it[0] == "created" }
