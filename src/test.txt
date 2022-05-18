@@ -1,0 +1,80 @@
+created,s10000,1652712855468
+created,s10001,1652712855468
+created,s10002,1652712855468
+created,s10003,1652712855468
+created,s10004,1652712855468
+created,s10005,1652712855468
+created,s10006,1652712855468
+created,s10007,1652712855468
+created,s10008,1652712855468
+created,s10009,1652712855468
+shipped,s10000,1652712855468,1652713940874
+shipped,s10001,1652712855468,1652713940874
+shipped,s10002,1652712855468,1652713940874
+shipped,s10003,1652712855468,1652713940874
+shipped,s10004,1652712855468,1652713940874
+shipped,s10005,1652712855468,1652713940874
+shipped,s10006,1652712855468,1652713940874
+shipped,s10007,1652712855468,1652713940874
+shipped,s10008,1652712855468,1652713940874
+shipped,s10009,1652712855468,1652713940874
+location,s10000,1652712855468,Los Angeles CA
+location,s10001,1652712855468,Los Angeles CA
+location,s10002,1652712855468,Los Angeles CA
+location,s10003,1652712855468,Los Angeles CA
+location,s10004,1652712855468,Los Angeles CA
+location,s10005,1652712855468,Los Angeles CA
+location,s10006,1652712855468,Los Angeles CA
+location,s10007,1652712855468,Los Angeles CA
+location,s10008,1652712855468,Los Angeles CA
+location,s10009,1652712855468,Los Angeles CA
+delayed,s10000,1652712855468,1652718051403
+delayed,s10001,1652712855468,1652718051403
+delayed,s10002,1652712855468,1652718051403
+delayed,s10003,1652712855468,1652718051403
+delayed,s10004,1652712855468,1652718051403
+delayed,s10005,1652712855468,1652718051403
+delayed,s10006,1652712855468,1652718051403
+delayed,s10007,1652712855468,1652718051403
+delayed,s10008,1652712855468,1652718051403
+delayed,s10009,1652712855468,1652718051403
+noteadded,s10000,1652712855468,package was damaged slightly during shipping
+noteadded,s10001,1652712855468,package was damaged slightly during shipping
+noteadded,s10002,1652712855468,package was damaged slightly during shipping
+noteadded,s10003,1652712855468,package was damaged slightly during shipping
+noteadded,s10004,1652712855468,package was damaged slightly during shipping
+noteadded,s10005,1652712855468,package was damaged slightly during shipping
+noteadded,s10006,1652712855468,package was damaged slightly during shipping
+noteadded,s10007,1652712855468,package was damaged slightly during shipping
+noteadded,s10008,1652712855468,package was damaged slightly during shipping
+noteadded,s10009,1652712855468,package was damaged slightly during shipping
+noteadded,s10000,1652712855468,shipping label reprinted because of damage
+noteadded,s10001,1652712855468,shipping label reprinted because of damage
+noteadded,s10002,1652712855468,shipping label reprinted because of damage
+noteadded,s10003,1652712855468,shipping label reprinted because of damage
+noteadded,s10004,1652712855468,shipping label reprinted because of damage
+noteadded,s10005,1652712855468,shipping label reprinted because of damage
+noteadded,s10006,1652712855468,shipping label reprinted because of damage
+noteadded,s10007,1652712855468,shipping label reprinted because of damage
+noteadded,s10008,1652712855468,shipping label reprinted because of damage
+noteadded,s10009,1652712855468,shipping label reprinted because of damage
+noteadded,s10000,1652712855468,inspection completed on exported goods
+noteadded,s10001,1652712855468,inspection completed on exported goods
+noteadded,s10002,1652712855468,inspection completed on exported goods
+noteadded,s10003,1652712855468,inspection completed on exported goods
+noteadded,s10004,1652712855468,inspection completed on exported goods
+noteadded,s10005,1652712855468,inspection completed on exported goods
+noteadded,s10006,1652712855468,inspection completed on exported goods
+noteadded,s10007,1652712855468,inspection completed on exported goods
+noteadded,s10008,1652712855468,inspection completed on exported goods
+noteadded,s10009,1652712855468,inspection completed on exported goods
+lost,s10000,1652712855468
+lost,s10001,1652712855468
+lost,s10002,1652712855468
+canceled,s10003,1652712855468
+canceled,s10004,1652712855468
+canceled,s10005,1652712855468
+delivered,s10006,1652712855468
+delivered,s10007,1652712855468
+delivered,s10008,1652712855468
+delivered,s10009,1652712855468
