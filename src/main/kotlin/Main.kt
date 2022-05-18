@@ -1,4 +1,5 @@
 // Copyright 2000-2021 JetBrains s.r.o. and contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+import ShipmentTracking.ShipmentTracker
 import androidx.compose.material.MaterialTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -44,7 +45,10 @@ fun App() {
 }
 
 fun main() = application {
-    Window(onCloseRequest = ::exitApplication) {
-        App()
-    }
+//    Window(onCloseRequest = ::exitApplication) {
+//        App()
+//    }
+
+    val tracker = ShipmentTracker()
+    tracker.runSimulation()
 }
