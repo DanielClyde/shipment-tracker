@@ -10,6 +10,7 @@ class ShipmentTracker {
     private val shipments = mutableListOf<Shipment>()
     private val updateReader = UpdateFileReader("src/test.txt")
     private val updateBehaviors = mapOf<String, ShipmentUpdateBehavior>(
+        Pair("created", ShipmentCreatedUpdateBehavior()),
         Pair("shipped", ShipmentShippedUpdateBehavior()),
         Pair("location", ShipmentLocationUpdateBehavior()),
         Pair("delivered", ShipmentDeliveredUpdateBehavior()),
@@ -19,29 +20,28 @@ class ShipmentTracker {
         Pair("noteadded", ShipmentNoteAddedUpdateBehavior())
     )
 
-//    fun findShipment(id: String): Shipment? {
-//        return shipments.find { s -> s.id === id }
-//    }
+    fun findShipment(id: String): Shipment? {
+        return shipments.find { it.id == id }
+    }
+
+    fun addShipment(shipment: Shipment) {
+        shipments.add(shipment)
+    }
 
     fun runSimulation() {
-        for (createdUpdate in updateReader.getCreatedUpdates()) {
-            shipments.add(Shipment(createdUpdate))
-        }
+        val tracker = this
         runBlocking {
-            repeat(updateReader.updateCount) { processUpdates() }
+            repeat(updateReader.updateCount) { processUpdates(tracker) }
             println("DONE")
         }
     }
 
-    private suspend fun processUpdates() = coroutineScope {
+    private suspend fun processUpdates(tracker: ShipmentTracker) = coroutineScope {
         launch {
             delay(1000)
             val update = updateReader.nextUpdate()
-            val shipment = shipments.find { it.id == update[1] }
-            if (shipment != null) {
-                updateBehaviors[update[0]]?.updateShipment(update, shipment)
-            }
-            println(shipment)
+            updateBehaviors[update[0]]?.updateShipment(update, tracker)
+            println(findShipment(update[1]))
         }
     }
 

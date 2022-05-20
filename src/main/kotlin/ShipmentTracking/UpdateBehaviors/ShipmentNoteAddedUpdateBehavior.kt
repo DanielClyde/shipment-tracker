@@ -1,9 +1,10 @@
 package ShipmentTracking.UpdateBehaviors
 
-import ShipmentTracking.Shipment
+import ShipmentTracking.ShipmentTracker
 
 class ShipmentNoteAddedUpdateBehavior: ShipmentUpdateBehavior {
-    override fun updateShipment(update: List<String>, shipment: Shipment) {
-        shipment.notes.add(update[3])
+    override fun updateShipment(update: List<String>, tracker: ShipmentTracker) {
+        val shipment = tracker.findShipment(update[1])
+        shipment?.addNote(update[3])
     }
 }

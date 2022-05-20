@@ -1,7 +1,7 @@
 package ShipmentTracking.UpdateBehaviors
 
-import ShipmentTracking.Shipment
+import ShipmentTracking.ShipmentTracker
 
 interface ShipmentUpdateBehavior {
-    fun updateShipment(update: List<String>, shipment: Shipment)
+    fun updateShipment(update: List<String>, tracker: ShipmentTracker)
 }
