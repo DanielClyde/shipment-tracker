@@ -1,10 +1,9 @@
 package ShipmentTracking
 
 import ShipmentTracking.UpdateBehaviors.*
-import kotlinx.coroutines.coroutineScope
+import androidx.compose.ui.text.toLowerCase
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import java.util.*
 
 class ShipmentTracker {
     private val shipments = mutableListOf<Shipment>()
@@ -21,29 +20,20 @@ class ShipmentTracker {
     )
 
     fun findShipment(id: String): Shipment? {
-        return shipments.find { it.id == id }
+        return shipments.find { it.id.lowercase(Locale.getDefault()) == id.lowercase(Locale.getDefault()) }
     }
 
     fun addShipment(shipment: Shipment) {
         shipments.add(shipment)
     }
 
-    fun runSimulation() {
+    suspend fun runSimulation() {
         val tracker = this
-        runBlocking {
-            repeat(updateReader.updateCount) { processUpdates(tracker) }
-            println("DONE")
-        }
-    }
-
-    private suspend fun processUpdates(tracker: ShipmentTracker) = coroutineScope {
-        launch {
+        for (i in 0 until updateReader.updateCount) {
             delay(1000)
             val update = updateReader.nextUpdate()
             updateBehaviors[update[0]]?.updateShipment(update, tracker)
             println(findShipment(update[1]))
         }
     }
-
-
 }
