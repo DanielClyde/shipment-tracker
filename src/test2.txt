@@ -1,0 +1,8 @@
+created,s10000,1652712855468
+shipped,s10000,1652712855468,1652713940874
+location,s10000,1652712855468,Los Angeles CA
+delayed,s10000,1652712855468,1652718051403
+noteadded,s10000,1652712855468,package was damaged slightly during shipping
+noteadded,s10000,1652712855468,shipping label reprinted because of damage
+noteadded,s10000,1652712855468,inspection completed on exported goods
+lost,s10000,1652712855468

@@ -27,7 +27,6 @@ class ShipmentTracker {
     }
 
     suspend fun runSimulation() {
-        val tracker = this
         for (i in 0 until updateReader.updateCount) {
             delay(1000)
             val update = updateReader.nextUpdate()
