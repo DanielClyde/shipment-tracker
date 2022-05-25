@@ -22,6 +22,10 @@ class Shipment(createdUpdate: List<String>): Subject() {
         return notes
     }
 
+    fun getStatusChangeHistory(): MutableList<StatusChangeHistoryRecord> {
+        return statusChangeHistory
+    }
+
     fun setStatus(s: String, timestamp: Long) {
         statusChangeHistory.add(StatusChangeHistoryRecord(status, s, timestamp))
         status = s

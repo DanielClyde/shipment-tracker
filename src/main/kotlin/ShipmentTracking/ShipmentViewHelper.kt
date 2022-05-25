@@ -9,13 +9,17 @@ class ShipmentViewHelper(private val shipment: Shipment): Observer {
     var expectedDeliveryTimestamp by mutableStateOf(shipment.expectedDeliveryTimestamp)
     var currentLocation by mutableStateOf(shipment.currentLocation)
     var status by mutableStateOf(shipment.status)
+    var isTracking by mutableStateOf(false)
 
     fun track() {
         shipment.addObserver(this)
+        isTracking = true
+        update()
     }
 
     fun stopTracking() {
         shipment.removeObserver(this)
+        isTracking = false
     }
 
     override fun update() {

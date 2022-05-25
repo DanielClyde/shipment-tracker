@@ -1,7 +1,6 @@
 package ShipmentTracking
 
 import ShipmentTracking.UpdateBehaviors.*
-import androidx.compose.ui.text.toLowerCase
 import kotlinx.coroutines.delay
 import java.util.*
 
@@ -32,8 +31,12 @@ class ShipmentTracker {
         for (i in 0 until updateReader.updateCount) {
             delay(1000)
             val update = updateReader.nextUpdate()
-            updateBehaviors[update[0]]?.updateShipment(update, tracker)
+            processUpdate(update)
             println(findShipment(update[1]))
         }
+    }
+
+    fun processUpdate(update: List<String>) {
+        updateBehaviors[update[0]]?.updateShipment(update, this);
     }
 }

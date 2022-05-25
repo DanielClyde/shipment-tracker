@@ -43,17 +43,29 @@ fun ShipmentCard(viewHelper: ShipmentViewHelper) {
             .fillMaxWidth()
             .border(1.dp, Color.Gray)
     ) {
-        Column(
-            modifier = Modifier
-            .padding(5.dp)
-        ) {
-            Text("ID: ${viewHelper.id}")
-            Text("Status: ${viewHelper.status}")
-            Text("Expected Delivery: ${viewHelper.expectedDeliveryTimestamp ?: "NA"}")
-            Text("Current Location: ${viewHelper.currentLocation ?: "NA"} ")
-            Text("Notes:  ")
-            viewHelper.notes.forEach {Text(" - $it", modifier = Modifier.padding(start = 3.dp))}
+        Row(horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
+            Column(
+                modifier = Modifier
+                    .padding(5.dp)
+            ) {
+                Text("ID: ${viewHelper.id}")
+                Text("Status: ${viewHelper.status}")
+                Text("Expected Delivery: ${viewHelper.expectedDeliveryTimestamp ?: "NA"}")
+                Text("Current Location: ${viewHelper.currentLocation ?: "NA"} ")
+                Text("Notes:  ")
+                viewHelper.notes.forEach {Text(" - $it", modifier = Modifier.padding(start = 3.dp))}
+            }
+            Column {
+                Button(onClick = {
+                    if (viewHelper.isTracking) {
+                        viewHelper.stopTracking()
+                    } else {
+                        viewHelper.track()
+                    }
+                }) { Text(if (viewHelper.isTracking) "Stop Tracking" else "Track") }
+            }
         }
+
     }
 }
 
@@ -119,7 +131,4 @@ fun main() = application {
     Window(onCloseRequest = ::exitApplication) {
         App()
     }
-
-//    val tracker = ShipmentTracker()
-//    tracker.runSimulation()
 }
