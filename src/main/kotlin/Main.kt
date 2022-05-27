@@ -77,9 +77,11 @@ fun App() {
     var errorMsg by remember { mutableStateOf("") }
     val viewHelpers = remember { mutableStateListOf<ShipmentViewHelper>() }
     val coroutineScope = rememberCoroutineScope()
+    println("LAUNCHING COROUTINE")
     coroutineScope.launch {
-        tracker.runSimulation()
+        Server.startServer(tracker)
     }
+    println("AFTER COROUTINE")
     MaterialTheme {
         Column {
             Row(
