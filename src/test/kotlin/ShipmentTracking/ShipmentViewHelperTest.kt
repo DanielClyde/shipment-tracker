@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test
 internal class ShipmentViewHelperTest {
     @Test
     fun initialize() {
-        val viewHelper = ShipmentViewHelper(Shipment(listOf("created", "1", "12345")))
+        val viewHelper = ShipmentViewHelper(ShipmentFactory.GetShipment(listOf("created", "1", "12345")))
         assertEquals(viewHelper.id, "1")
         assertEquals(viewHelper.notes.size, 0)
         assertEquals(viewHelper.currentLocation, null)
@@ -16,7 +16,7 @@ internal class ShipmentViewHelperTest {
 
     @Test
     fun trackNotes() {
-        val shipment = Shipment(listOf("created", "1", "12345"))
+        val shipment = ShipmentFactory.GetShipment(listOf("created", "1", "12345"))
         val viewHelper = ShipmentViewHelper(shipment)
         viewHelper.track()
         shipment.addNote("Test Note 1")
@@ -29,7 +29,7 @@ internal class ShipmentViewHelperTest {
 
     @Test
     fun trackExpectedDeliveryTimestamp() {
-        val shipment = Shipment(listOf("created", "1", "12345"))
+        val shipment = ShipmentFactory.GetShipment(listOf("created", "1", "12345"))
         val viewHelper = ShipmentViewHelper(shipment)
         assertEquals(viewHelper.expectedDeliveryTimestamp, null)
         viewHelper.track()
@@ -42,7 +42,7 @@ internal class ShipmentViewHelperTest {
 
     @Test
     fun trackCurrentLocation() {
-        val shipment = Shipment(listOf("created", "1", "12345"))
+        val shipment = ShipmentFactory.GetShipment(listOf("created", "1", "12345"))
         val viewHelper = ShipmentViewHelper(shipment)
         assertEquals(viewHelper.currentLocation, null)
         viewHelper.track()
@@ -55,7 +55,7 @@ internal class ShipmentViewHelperTest {
 
     @Test
     fun trackStatus() {
-        val shipment = Shipment(listOf("created", "1", "12345"))
+        val shipment = ShipmentFactory.GetShipment(listOf("created", "1", "12345"))
         val viewHelper = ShipmentViewHelper(shipment)
         assertEquals(viewHelper.status, "created")
         viewHelper.track()

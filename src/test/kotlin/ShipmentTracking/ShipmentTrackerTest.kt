@@ -16,7 +16,7 @@ internal class ShipmentTrackerTest {
     @Test
     fun findShipment() {
         val tracker = ShipmentTracker()
-        tracker.addShipment(Shipment(listOf("created", "test_id", "12345")))
+        tracker.addShipment(ShipmentFactory.GetShipment(listOf("created", "test_id", "12345")))
         val shipment = tracker.findShipment("test_id")
         assertEquals(shipment?.id, "test_id")
         assertEquals(shipment?.status, "created")
@@ -32,9 +32,9 @@ internal class ShipmentTrackerTest {
     @Test
     fun addShipment() {
         val tracker = ShipmentTracker()
-        tracker.addShipment(Shipment(listOf("created", "1", "12345")))
-        tracker.addShipment(Shipment(listOf("created", "2", "12346")))
-        tracker.addShipment(Shipment(listOf("created", "3", "12347")))
+        tracker.addShipment(ShipmentFactory.GetShipment(listOf("created", "1", "12345")))
+        tracker.addShipment(ShipmentFactory.GetShipment(listOf("created", "2", "12346")))
+        tracker.addShipment(ShipmentFactory.GetShipment(listOf("created", "3", "12347")))
         val s1 = tracker.findShipment("1")
         val s2 = tracker.findShipment("2")
         val s3 = tracker.findShipment("3")
@@ -56,7 +56,7 @@ internal class ShipmentTrackerTest {
     @Test
     fun processShippedUpdate() {
         val tracker = ShipmentTracker()
-        tracker.addShipment(Shipment(listOf("created", "1", "12345")))
+        tracker.addShipment(ShipmentFactory.GetShipment(listOf("created", "1", "12345")))
         val shipment = tracker.findShipment("1")
         assertEquals(shipment?.getStatusChangeHistory()?.size, 1)
         assertEquals(shipment?.status, "created")
@@ -70,7 +70,7 @@ internal class ShipmentTrackerTest {
     @Test
     fun processDelayedUpdate() {
         val tracker = ShipmentTracker()
-        tracker.addShipment(Shipment(listOf("created", "1", "12345")))
+        tracker.addShipment(ShipmentFactory.GetShipment(listOf("created", "1", "12345")))
         val shipment = tracker.findShipment("1")
         assertEquals(shipment?.getStatusChangeHistory()?.size, 1)
         tracker.processUpdate(listOf("delayed", "1", "12346", "123456"))
@@ -82,7 +82,7 @@ internal class ShipmentTrackerTest {
     @Test
     fun processLocationUpdate() {
         val tracker = ShipmentTracker()
-        tracker.addShipment(Shipment(listOf("created", "1", "12345")))
+        tracker.addShipment(ShipmentFactory.GetShipment(listOf("created", "1", "12345")))
         val shipment = tracker.findShipment("1")
         assertEquals(shipment?.getStatusChangeHistory()?.size, 1)
         tracker.processUpdate(listOf("location", "1", "12346", "Some Location"))
@@ -95,7 +95,7 @@ internal class ShipmentTrackerTest {
     @Test
     fun processNoteAddedUpdate() {
         val tracker = ShipmentTracker()
-        tracker.addShipment(Shipment(listOf("created", "1", "12345")))
+        tracker.addShipment(ShipmentFactory.GetShipment(listOf("created", "1", "12345")))
         val shipment = tracker.findShipment("1")
         assertEquals(shipment?.getStatusChangeHistory()?.size, 1)
         assertEquals(shipment?.getNotes()?.size, 0)
@@ -111,7 +111,7 @@ internal class ShipmentTrackerTest {
     @Test
     fun processCanceledUpdate() {
         val tracker = ShipmentTracker()
-        tracker.addShipment(Shipment(listOf("created", "1", "12345")))
+        tracker.addShipment(ShipmentFactory.GetShipment(listOf("created", "1", "12345")))
         val shipment = tracker.findShipment("1")
         assertEquals(shipment?.getStatusChangeHistory()?.size, 1)
         assertEquals(shipment?.getNotes()?.size, 0)
@@ -126,7 +126,7 @@ internal class ShipmentTrackerTest {
     @Test
     fun processDeliveredUpdate() {
         val tracker = ShipmentTracker()
-        tracker.addShipment(Shipment(listOf("created", "1", "12345")))
+        tracker.addShipment(ShipmentFactory.GetShipment(listOf("created", "1", "12345")))
         val shipment = tracker.findShipment("1")
         assertEquals(shipment?.getStatusChangeHistory()?.size, 1)
         tracker.processUpdate(listOf("delivered", "1", "12346"))
@@ -139,7 +139,7 @@ internal class ShipmentTrackerTest {
     @Test
     fun processLostUpdate() {
         val tracker = ShipmentTracker()
-        tracker.addShipment(Shipment(listOf("created", "1", "12345")))
+        tracker.addShipment(ShipmentFactory.GetShipment(listOf("created", "1", "12345")))
         val shipment = tracker.findShipment("1")
         assertEquals(shipment?.getStatusChangeHistory()?.size, 1)
         tracker.processUpdate(listOf("lost", "1", "12346"))
@@ -152,7 +152,7 @@ internal class ShipmentTrackerTest {
     @Test
     fun processInvalidUpdate() {
         val tracker = ShipmentTracker()
-        tracker.addShipment(Shipment(listOf("created", "1", "12345")))
+        tracker.addShipment(ShipmentFactory.GetShipment(listOf("created", "1", "12345")))
         val shipment = tracker.findShipment("1")
         assertEquals(shipment?.getStatusChangeHistory()?.size, 1)
         tracker.processUpdate(listOf("something", "1", "12346"))

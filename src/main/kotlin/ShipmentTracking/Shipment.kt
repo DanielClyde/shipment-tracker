@@ -2,7 +2,10 @@ package ShipmentTracking
 
 import Observer.Subject
 
-class Shipment(createdUpdate: List<String>): Subject() {
+abstract class Shipment(createdUpdate: List<String>): Subject() {
+
+    protected var error: String? = null;
+
     val id: String
     private val notes = mutableListOf<String>()
     private val statusChangeHistory = mutableListOf<StatusChangeHistoryRecord>()
@@ -17,6 +20,8 @@ class Shipment(createdUpdate: List<String>): Subject() {
         id = createdUpdate[1]
         setStatus(createdUpdate[0], createdUpdate[2].toLong())
     }
+
+    abstract fun validate()
 
     fun getNotes(): MutableList<String> {
         return notes

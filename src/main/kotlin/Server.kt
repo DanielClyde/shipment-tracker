@@ -12,7 +12,6 @@ import java.lang.Error
 object Server {
     private var isRunning = false
     suspend fun startServer(tracker: ShipmentTracker) {
-        println("STARTING SERVER")
         if (isRunning) {
             throw Error("Web Server already running!")
         }
@@ -32,6 +31,5 @@ object Server {
                 }
             }
         }.start(wait = false)
-        println("STARTED")
     }
 }
