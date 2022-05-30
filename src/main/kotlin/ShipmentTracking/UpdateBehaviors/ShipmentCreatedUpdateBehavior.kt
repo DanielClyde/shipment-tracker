@@ -1,6 +1,5 @@
 package ShipmentTracking.UpdateBehaviors
 
-import ShipmentTracking.Shipment
 import ShipmentTracking.ShipmentFactory
 import ShipmentTracking.ShipmentTracker
 

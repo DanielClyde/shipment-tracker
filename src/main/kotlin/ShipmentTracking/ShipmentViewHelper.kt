@@ -2,6 +2,7 @@ package ShipmentTracking
 
 import Observer.Observer
 import androidx.compose.runtime.*
+import java.util.*
 
 class ShipmentViewHelper(private val shipment: Shipment): Observer {
     var id by mutableStateOf(shipment.id)
@@ -10,6 +11,8 @@ class ShipmentViewHelper(private val shipment: Shipment): Observer {
     var currentLocation by mutableStateOf(shipment.currentLocation)
     var status by mutableStateOf(shipment.status)
     var isTracking by mutableStateOf(false)
+    val type by mutableStateOf(shipment.type.uppercase(Locale.getDefault()))
+    var errorMsg by mutableStateOf(shipment.error)
 
     fun track() {
         shipment.addObserver(this)
@@ -29,6 +32,7 @@ class ShipmentViewHelper(private val shipment: Shipment): Observer {
         expectedDeliveryTimestamp = shipment.expectedDeliveryTimestamp
         currentLocation = shipment.currentLocation
         status = shipment.status
+        errorMsg = shipment.error
     }
 
     override fun toString(): String {

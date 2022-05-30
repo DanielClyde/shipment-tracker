@@ -1,12 +1,15 @@
 package ShipmentTracking
 
 import Observer.Subject
+import java.time.LocalDate
 
 abstract class Shipment(createdUpdate: List<String>): Subject() {
 
-    protected var error: String? = null;
+    var error: String? = null;
+    abstract val type: String
 
     val id: String
+    val createdDate: LocalDate
     private val notes = mutableListOf<String>()
     private val statusChangeHistory = mutableListOf<StatusChangeHistoryRecord>()
     var status: String = "created"
@@ -18,6 +21,7 @@ abstract class Shipment(createdUpdate: List<String>): Subject() {
 
     init {
         id = createdUpdate[1]
+        createdDate = LocalDate.now()
         setStatus(createdUpdate[0], createdUpdate[2].toLong())
     }
 
@@ -34,21 +38,26 @@ abstract class Shipment(createdUpdate: List<String>): Subject() {
     fun setStatus(s: String, timestamp: Long) {
         statusChangeHistory.add(StatusChangeHistoryRecord(status, s, timestamp))
         status = s
-        notifyObservers()
+        onUpdated()
     }
 
     fun addNote(note: String) {
         notes.add(note)
-        notifyObservers()
+        onUpdated()
     }
 
     fun setLocation(location: String?) {
         currentLocation = location
-        notifyObservers()
+        onUpdated()
     }
 
     fun setExpectedDeliveryTimestamp(timestamp: Long?) {
         expectedDeliveryTimestamp = timestamp
+        onUpdated()
+    }
+
+    fun onUpdated() {
+        validate()
         notifyObservers()
     }
 

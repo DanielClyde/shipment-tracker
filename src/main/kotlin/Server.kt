@@ -31,5 +31,6 @@ object Server {
                 }
             }
         }.start(wait = false)
+        println("Server listening on port 8080")
     }
 }

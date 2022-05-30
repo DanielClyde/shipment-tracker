@@ -1,7 +1,8 @@
 package ShipmentTracking
 
 class StandardShipment(createdUpdate: List<String>): Shipment(createdUpdate) {
+    override val type: String = "standard"
     override fun validate() {
-        TODO("Not yet implemented")
+        error = null
     }
 }

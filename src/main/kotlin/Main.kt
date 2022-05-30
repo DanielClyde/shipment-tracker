@@ -49,11 +49,18 @@ fun ShipmentCard(viewHelper: ShipmentViewHelper) {
                     .padding(5.dp)
             ) {
                 Text("ID: ${viewHelper.id}")
+                Text("Type: ${viewHelper.type}")
                 Text("Status: ${viewHelper.status}")
                 Text("Expected Delivery: ${viewHelper.expectedDeliveryTimestamp ?: "NA"}")
                 Text("Current Location: ${viewHelper.currentLocation ?: "NA"} ")
                 Text("Notes:  ")
                 viewHelper.notes.forEach {Text(" - $it", modifier = Modifier.padding(start = 3.dp))}
+                if (viewHelper.errorMsg != null) {
+                    Text(
+                        "Error: ${viewHelper.errorMsg}",
+                        color = Color.Red
+                    )
+                }
             }
             Column {
                 Button(onClick = {

@@ -21,10 +21,12 @@ class ShipmentTracker {
     }
 
     fun addShipment(shipment: Shipment) {
+        println("ADDING SHIPMENT $shipment")
         shipments.add(shipment)
     }
 
     fun processUpdate(update: List<String>) {
+        println("Processing...${update}")
         updateBehaviors[update[0]]?.updateShipment(update, this);
     }
 }
