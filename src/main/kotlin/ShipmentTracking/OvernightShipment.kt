@@ -9,8 +9,8 @@ class OvernightShipment(createdUpdate: List<String>): Shipment(createdUpdate) {
     override val type: String = "overnight"
     override fun validate() {
         val expectedDeliveryDay: LocalDate? =
-            expectedDeliveryTimestamp?.let { Instant.ofEpochSecond(it).atZone(ZoneId.systemDefault()).truncatedTo(ChronoUnit.DAYS).toLocalDate(); }
-        val oneDayAfterCreated: LocalDate = createdDate.atStartOfDay().plusDays(1).toLocalDate()
+            expectedDeliveryTimestamp?.let { Instant.ofEpochSecond(it).atZone(ZoneId.systemDefault()).toLocalDate() }
+        val oneDayAfterCreated: LocalDate = createdDate.atStartOfDay().plusDays(2).toLocalDate()
 
         error = if (expectedDeliveryDay?.isAfter(oneDayAfterCreated) == true) {
             "Overnight shipments must have an expected delivery of the day after it was created"

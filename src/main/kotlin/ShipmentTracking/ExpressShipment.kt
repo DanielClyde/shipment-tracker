@@ -12,7 +12,7 @@ class ExpressShipment(createdUpdate: List<String>): Shipment(createdUpdate) {
         val expectedDeliveryDay: LocalDate? =
             expectedDeliveryTimestamp?.let { Instant.ofEpochSecond(it).atZone(ZoneId.systemDefault()).truncatedTo(
                 ChronoUnit.DAYS).toLocalDate(); }
-        val threeDaysAfterCreated: LocalDate = createdDate.atStartOfDay().plusDays(3).toLocalDate()
+        val threeDaysAfterCreated: LocalDate = createdDate.atStartOfDay().plusDays(4).toLocalDate()
 
         error = if (expectedDeliveryDay?.isAfter(threeDaysAfterCreated) == true) {
             "Express shipments cannot have an expected delivery date of more than 3 days after the shipment was created"

@@ -5,7 +5,7 @@ import java.util.*
 
 object ShipmentFactory {
     fun GetShipment(createdUpdate: List<String>): Shipment {
-        val shipmentType = createdUpdate[3]
+        val shipmentType = if (createdUpdate.size > 3) createdUpdate[3] else "standard"
         println("IN Factory $shipmentType")
         return if (shipmentType.lowercase(Locale.getDefault()) == "standard") {
             StandardShipment(createdUpdate)
