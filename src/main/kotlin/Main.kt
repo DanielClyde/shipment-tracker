@@ -55,6 +55,8 @@ fun ShipmentCard(viewHelper: ShipmentViewHelper) {
                 Text("Current Location: ${viewHelper.currentLocation ?: "NA"} ")
                 Text("Notes:  ")
                 viewHelper.notes.forEach {Text(" - $it", modifier = Modifier.padding(start = 3.dp))}
+                Text("History:  ")
+                viewHelper.statusChangeHistory.forEach {Text(" - $it", modifier = Modifier.padding(start = 3.dp))}
                 if (viewHelper.errorMsg != null) {
                     Text(
                         "Error: ${viewHelper.errorMsg}",

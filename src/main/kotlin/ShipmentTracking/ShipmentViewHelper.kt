@@ -7,6 +7,7 @@ import java.util.*
 class ShipmentViewHelper(private val shipment: Shipment): Observer {
     var id by mutableStateOf(shipment.id)
     var notes = mutableStateListOf<String>()
+    var statusChangeHistory = mutableStateListOf<StatusChangeHistoryRecord>()
     var expectedDeliveryTimestamp by mutableStateOf(shipment.expectedDeliveryTimestamp)
     var currentLocation by mutableStateOf(shipment.currentLocation)
     var status by mutableStateOf(shipment.status)
@@ -29,6 +30,8 @@ class ShipmentViewHelper(private val shipment: Shipment): Observer {
         id = shipment.id
         notes.clear()
         shipment.getNotes().forEach { notes.add(it) }
+        statusChangeHistory.clear()
+        shipment.getStatusChangeHistory().forEach { statusChangeHistory.add(it) }
         expectedDeliveryTimestamp = shipment.expectedDeliveryTimestamp
         currentLocation = shipment.currentLocation
         status = shipment.status
